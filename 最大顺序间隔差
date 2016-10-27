@@ -1,0 +1,25 @@
+//数组中顺序最大间隔差值
+
+#include<iostream>
+#include<algorithm>
+
+using namespace std;
+static const int Max = 200000;
+
+int main() {
+	int R[Max],n;
+	cout << "请输入数据的个数：";
+	cin >> n;
+	for (int i = 0; i < n; i++)
+		cin >> R[i];
+
+	int vmax = -2000000000;
+	int vmin = R[0];
+
+	for (int i = 1; i < n; i++) {
+		vmax = max(vmax, R[i] - vmin);
+		vmin = min(vmin, R[i]);
+	}
+	cout << "最大顺序间隔差值为：" << vmax << endl;
+	return 0;
+}
