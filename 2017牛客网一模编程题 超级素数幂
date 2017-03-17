@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isprime(long long n)//判断是否为素数
+{
+	long long flag=sqrt(n);
+	for (long long i = 2; i <= flag; i++)
+		if (n%i == 0) return false;
+	return true;
+}
+
+int main()
+{
+	long long n, p, q, ceil;
+	cin >> n;
+	ceil = log2(n);     //ceil为幂的最大值
+	for (q = 2; q <= ceil; q++)
+	{
+		p = pow(n, 1.0 / q);
+		if (pow(p, q) == n && isprime(p))//p为整数且为素数
+        {
+            cout << p << " " << q << endl;
+            break;
+        }
+	}
+	if (q > ceil)
+		cout << "No" << endl;
+
+	return 0;
+}
