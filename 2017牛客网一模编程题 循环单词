@@ -1,0 +1,41 @@
+#include <string>  
+#include <iostream>  
+#include <vector>  
+using namespace std;
+
+int main()
+{
+	int n, num = 0;
+	vector<string> words;
+	vector<bool> checks; 
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		string input_word;
+		cin >> input_word;
+		words.push_back(input_word);
+		checks.push_back(false);
+	}
+
+	for (int j = 0; j < n; j++)
+	{
+		if (!checks[j]) 
+		{
+			string com_word;
+			com_word = words[j] + words[j];
+			for (int k = j + 1; k < n; k++)
+			{
+				if (!checks[k]) 
+				{
+					if (com_word.find(words[k]) !=string::npos && words[k].length() == words[j].length()) 
+						checks[k] = true;
+				}
+			}
+			num++;
+		}
+	}
+
+	cout << num << endl;
+
+	return 0;
+}
